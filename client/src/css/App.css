@@ -1,0 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  border: none;
+  font-family: "Roboto", san-serf;
+  font-weight: 400;
+  box-sizing: border-box;
+}
