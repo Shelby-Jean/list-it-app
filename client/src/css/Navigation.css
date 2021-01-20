@@ -1,0 +1,9 @@
+#main-logo {
+  height: 125px;
+  margin-top: 10px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+}
