@@ -1,13 +1,15 @@
-import '../css/LogIn.css';
 
 const LogIn = () => {
   return (
     <div>
-      <form className="login-form">
-        <input className="login-input" type="text" placeholder="username" />
-        <input className="login-input"  type="password" placeholder="password" />
-        <button className="login-button" type="submit">LOGIN</button>
+      <form className="form">
+        <input className="input" type="text" placeholder="username" />
+        <input className="input"  type="password" placeholder="password" />
+        <button className="button" type="submit">LOG IN</button>
       </form>
+      {/* <div className="login-signup-alt">
+        <p>Don't have an account? Sign up here!</p>
+      </div> */}
     </div>
   );
 }

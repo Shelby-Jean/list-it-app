@@ -1,5 +1,4 @@
 import ListItLogo from '../media/List-It-Logo.png';
-import '../css/Navigation.css';
 
 const Navigation = () => {
   return (
