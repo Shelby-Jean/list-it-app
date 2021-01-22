@@ -1,0 +1,4 @@
+runtime: nodejs10;
+
+env_variables:
+  CLOUD_INSTANCE: abstract-frame-288421:us-east1:grocery-list
