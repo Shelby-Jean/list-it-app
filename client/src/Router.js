@@ -28,9 +28,9 @@ const Router = () => {
     <Switch>
       <Route path='/login' component={LogIn} />
       <Route path='/signup' component={SignUp} />
-      <ProtectedRoute path='/list' component={List} />
-      <ProtectedRoute path='/additem' component={AddItem} />
-      <ProtectedRoute path='/edititem/:id' component={EditItem} />
+      <Route path='/list' component={List} />
+      <Route path='/additem' component={AddItem} />
+      <Route path='/edititem/:id' component={EditItem} />
     </Switch>
   )
 }
