@@ -1,4 +1,4 @@
-import ListItLogo from '../media/List-It-Logo.png';
+import ListItLogo from '../images/List-It-Logo.png';
 
 const Navigation = () => {
   return (

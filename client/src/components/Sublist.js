@@ -10,3 +10,7 @@ const Sublist = (props) => {
 }
 
 export default Sublist;
+
+// props.groceryList.sublists.map(sublist => (
+//   <h3>{sublist.name}</h3>
+// ))
