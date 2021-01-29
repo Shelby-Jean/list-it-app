@@ -7,10 +7,10 @@ class Connection {
 
       const config = {
         connectionLimit: 100,
-        host: '35.227.12.255',
+        host: '35.196.197.142',
         user: 'root',
         password: '@ppl3$',
-        database: 'grocery-list'
+        database: 'list-it-app'
       };
 
       if (process.env.NODE_END === 'production' && process.env.CLOUD_INSTANCE) {

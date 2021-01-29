@@ -2,9 +2,7 @@ import { Switch, Route, Redirect } from 'react-router';
 import cookie from 'cookie';
 import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
-import List from './components/List';
-import AddItem from './components/AddItem';
-import EditItem from './components/EditItem';
+import List from './containers/List';
 
 const checkAuth = () => {
   const cookies = cookie.parse(document.cookie);
@@ -29,8 +27,6 @@ const Router = () => {
       <Route path='/login' component={LogIn} />
       <Route path='/signup' component={SignUp} />
       <Route path='/list' component={List} />
-      <Route path='/additem' component={AddItem} />
-      <Route path='/edititem/:id' component={EditItem} />
     </Switch>
   )
 }

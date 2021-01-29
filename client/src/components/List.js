@@ -1,7 +1,14 @@
-const List = () => {
+import Sublist from '../containers/Sublist';
+// import Item from '../containers/Item';
+import '../css/components/list-component.css';
+
+const List = (props) => {
   return (
     <div>
-      <h1>List</h1>
+      <div className="list-header">
+        <h3>Grocery List</h3>
+      </div>
+      <Sublist />
     </div>
   );
 }

@@ -8,16 +8,16 @@ const { handleSQLError } = require('../sql/error');
 const saltRounds = 10;
 
 const signup = (req, res) => {
-  const { email, password } = req.body;
-  let sql = 'INSERT INTO users (email, password) VALUES (?, ?)';
+  const { username, password } = req.body;
+  let sql = 'INSERT INTO users (username, password) VALUES (?, ?)';
 
   bcrypt.hash(password, saltRounds, function(err, hash) {
-    sql = mysql.format(sql, [ email, hash ]);
+    sql = mysql.format(sql, [ username, hash ]);
 
     pool.query(sql, (err, res) => {
       if (err) {
         if (err.code === 'ER_DUP_ENTRY') {
-          return res.status(409).send('This email address is already registered.');
+          return res.status(409).send('This username is already registered.');
         }
       }
       return res.send('Sign-up successful');
@@ -26,8 +26,8 @@ const signup = (req, res) => {
 }
 
 const login = (req, res) => {
-  const { email, password } = req.body;
-  let sql = 'SELECT * FROM users WHERE email = ?';
+  const { username, password } = req.body;
+  let sql = 'SELECT * FROM users WHERE username = ?';
   sql = mysql.format(sql, [ username ]);
 
   pool.query(sql, (err, rows) => {
