@@ -1,10 +1,47 @@
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-const LogIn = () => {
+const LogIn = (props) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  let history = useHistory();
+
+  const handleUsername = (e) => {
+    setUsername(e.target.value);
+  }
+
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+  }
+
+  const login = (e) => {
+    e.preventDefault();
+    const user = {username, password};
+    document.cookie = "loggedIn=true;max-age=60*1000";
+    props.setUser(user);
+    history.push("/list");
+  }
+
   return (
     <div>
-      <form className="form">
-        <input className="input" type="text" placeholder="username" />
-        <input className="input"  type="password" placeholder="password" />
+      <form className="form" onSubmit={login}>
+        <input 
+          required
+          className="input" 
+          type="text" 
+          placeholder="username"
+          value={username}
+          onChange={handleUsername}
+        />
+        <input 
+          required
+          className="input" 
+          type="password" 
+          placeholder="password"
+          value={password}
+          onChange={handlePassword}
+        />
         <button className="button" type="submit">LOG IN</button>
       </form>
       {/* <div className="login-signup-alt">

@@ -3,6 +3,8 @@ const usersController = require('../controllers/users');
 const { authenticate } = require('../middleware/auth');
 const router = express.Router();
 
+//add authenticate middlewhere back in to each route
+
 router.get('/', usersController.getAllUsers);
 
 router.get('/:username', usersController.getUserByUsername);

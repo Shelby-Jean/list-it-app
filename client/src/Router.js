@@ -1,6 +1,6 @@
 import { Switch, Route, Redirect } from 'react-router';
 import cookie from 'cookie';
-import LogIn from './components/LogIn';
+import LogIn from './containers/LogIn';
 import SignUp from './components/SignUp';
 import List from './containers/List';
 
