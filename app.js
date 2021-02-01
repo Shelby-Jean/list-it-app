@@ -3,11 +3,11 @@ const bodyParser = require('body-parser');
 const usersRouter = require('./routers/users');
 const authRouter = require('./routers/auth');
 const listsRouter = require('./routers/lists');
-const itemsRouter = require('./routers/lists');
+const itemsRouter = require('./routers/items');
 const { logger } = require('./middleware/auth');
 
 const app = express();
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 app.use(logger);
@@ -21,5 +21,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(port, () => {
- console.log(`Web server is listening on port ${port}!`);
+ console.log(`Server started on port ${port}!`);
 });

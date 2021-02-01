@@ -9,4 +9,17 @@ const user = (state = null, action) => {
   }
 }
 
-export default combineReducers({ user, })
+const items = (state = [{}], action) => {
+  switch (action.type) {
+    case "GET_ITEMS":
+      return {...state};
+      case "ADD_ITEM":
+      return action.value;
+      case "DELETE_ITEM":
+      return action.value;
+    default:
+      return state;
+  }
+}
+
+export default combineReducers({ user, items })

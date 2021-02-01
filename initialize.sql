@@ -2,15 +2,15 @@ DROP TABLE IF EXISTS users, items, list;
 
 CREATE TABLE users (
     user_id INT NOT NULL AUTO_INCREMENT,
-    username VARCHAR(75),
-    password VARCHAR(100),
+    username VARCHAR(45),
+    password VARCHAR(100000),
     PRIMARY KEY (user_id)
 );
 
 CREATE TABLE items (
     item_id INT NOT NULL AUTO_INCREMENT,
-    item_name VARCHAR(50),
-    category VARCHAR(50),
+    item_name VARCHAR(45),
+    category VARCHAR(45),
     quantity INT,
     PRIMARY KEY (item_id)
 );

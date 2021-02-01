@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "npm start --prefix client",
-    "server": "node -r dotenv/config server/app.js",
+    "server": "node -r dotenv/config app.js",
     "start": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
@@ -19,8 +19,7 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.4",
-    "react-icons": "^4.1.0"
+    "nodemon": "^2.0.4"
   },
   "devDependencies": {
     "concurrently": "^5.3.0"
