@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS users, items, list;
+DROP TABLE IF EXISTS users, items, sublists, lists;
 
 CREATE TABLE users (
     user_id INT NOT NULL AUTO_INCREMENT,
@@ -10,21 +10,26 @@ CREATE TABLE users (
 CREATE TABLE items (
     item_id INT NOT NULL AUTO_INCREMENT,
     item_name VARCHAR(45),
-    category VARCHAR(45),
     quantity INT,
-    PRIMARY KEY (item_id)
+    sublist_id INT,
+    PRIMARY KEY (item_id),
+    FOREIGN KEY (sublist_id)
+    REFERENCES sublists (sublist_id)
 );
 
-CREATE TABLE list (
+CREATE TABLE sublists (
+    sublist_id INT NOT NULL AUTO_INCREMENT,
+    sublist_name VARCHAR(100),
+    list_id INT,
+    PRIMARY KEY (item_id),
+    FOREIGN KEY (list_id)
+    REFERENCES lists (list_id)
+)
+
+CREATE TABLE lists (
     list_id INT NOT NULL AUTO_INCREMENT,
-    item_id INT NOT NULL,
     user_id INT NOT NULL,
-    item_name VARCHAR(100),
-    category VARCHAR(100),
-    quantity INT,
     PRIMARY KEY (list_id),
-    FOREIGN KEY (item_id)
-    REFERENCES items (item_id),
     FOREIGN KEY (user_id)
     REFERENCES users (user_id)
 );
