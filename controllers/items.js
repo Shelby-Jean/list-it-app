@@ -24,17 +24,16 @@ const getItemById = (req, res) => {
 };
 
 const createItem = (req, res) => {
-  let sql = 'INSERT INTO items (item_name, category, quantity) VALUES (?, ?, ?);';
-  sql = mysql.format(sql, [req.body.item_name, req.body.category, req.body.quantity]);
+  let sql = 'INSERT INTO items (item_name, quantity) VALUES (?, ?);';
+  sql = mysql.format(sql, [req.body.item_name, req.body.quantity]);
 
-  pool.query(sql, (err, res) => {
+  pool.query(sql, (err, results) => {
     if (err) {
       return handleSQLError(res, err);
     }
     return res.json({
-      newId:SpeechRecognitionResultList.insertId,
-      item: req.body.item_name,
-      category: req.body.category,
+      newId: results.insertId,
+      item_name: req.body.item_name,
       quantity: req.body.quantity
     });
   })

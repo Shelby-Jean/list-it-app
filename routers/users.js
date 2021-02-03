@@ -9,8 +9,8 @@ router.get('/', usersController.getAllUsers);
 
 router.get('/:username', usersController.getUserByUsername);
 
-router.put('/signup/:username', usersController.createUser);
+// router.put('/signup/:username', usersController.createUser);
 
-router.delete('/delete/:username', usersController.deleteUserByUsername);
+router.delete('/delete/:id', usersController.deleteUserById);
 
 module.exports = router;

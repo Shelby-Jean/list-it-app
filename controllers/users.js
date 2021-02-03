@@ -23,24 +23,25 @@ const getUserByUsername = (req, res) => {
   })
 };
 
-const createUser = (req, res) => {
-  let sql = 'INSERT INTO users (username) VALUES (?);';
-  sql = mysql.format(sql, [req.body.username]);
+// const createUser = (req, res) => {
+//   let sql = 'INSERT INTO users (username, password) VALUES (?, ?);';
+//   sql = mysql.format(sql, [req.body.username, req.body.password]);
 
-  pool.query(sql, (err, res) => {
-    if (err) {
-      return handleSQLError(res, err);
-    }
-    return res.json({
-      newId:SpeechRecognitionResultList.insertId,
-      username: req.body.username
-    });
-  })
-}
+//   pool.query(sql, (err, res) => {
+//     if (err) {
+//       return handleSQLError(res, err);
+//     }
+//     return res.json({
+//       newId:req.body.user_id,
+//       username: req.body.username,
+//       password: req.body.password
+//     });
+//   })
+// }
 
-const deleteUserByUsername = (req, res) => {
-  let sql = 'DELETE FROM users WHERE username = ?';
-  sql = mysql.format(sql, [req.body.username]);
+const deleteUserById = (req, res) => {
+  let sql = 'DELETE FROM users WHERE user_id = ?';
+  sql = mysql.format(sql, [req.body.user_id]);
 
   pool.query(sql, (err, results) => {
     if (err) {
@@ -53,6 +54,6 @@ const deleteUserByUsername = (req, res) => {
 module.exports = { 
   getAllUsers,
   getUserByUsername,
-  createUser,
-  deleteUserByUsername
+  // createUser,
+  deleteUserById
 };
