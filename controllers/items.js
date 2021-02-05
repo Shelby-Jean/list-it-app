@@ -2,8 +2,10 @@ const mysql = require('mysql');
 const pool = require('../sql/connection');
 const { handleSQLError } = require('../sql/error');
 
-const getAllItems = (req, res) => {
-  let sql = 'SELECT * FROM items ORDER BY item_name ASC';
+getItemNameQuantityCategory = (req, res) => {
+  let sql = `SELECT items.item_name, items.quantity, categories.category_name 
+    FROM items INNER JOIN categories ON categories.category_id = items.category_id 
+    ORDER BY item_name ASC`;
   pool.query(sql, (err, rows) => {
     if (err) {
       return handleSQLError(res, err);
@@ -12,16 +14,26 @@ const getAllItems = (req, res) => {
   })
 };
 
-const getItemById = (req, res) => {
-  let sql = 'SELECT * FROM items WHERE item_id = ?';
-  sql = mysql.format(sql, [req.params.item_id]);
-  pool.query(sql, (err, rows) => {
-    if (err) {
-      return handleSQLError(res, err);
-    }
-    return res.json(rows);
-  });
-};
+// const getAllItems = (req, res) => {
+//   let sql = 'SELECT * FROM items ORDER BY item_name ASC';
+//   pool.query(sql, (err, rows) => {
+//     if (err) {
+//       return handleSQLError(res, err);
+//     }
+//     return res.json(rows);
+//   })
+// };
+
+// const getItemById = (req, res) => {
+//   let sql = 'SELECT * FROM items WHERE item_id = ?';
+//   sql = mysql.format(sql, [req.params.item_id]);
+//   pool.query(sql, (err, rows) => {
+//     if (err) {
+//       return handleSQLError(res, err);
+//     }
+//     return res.json(rows);
+//   });
+// };
 
 const createItem = (req, res) => {
   let sql = 'INSERT INTO items (item_name, quantity) VALUES (?, ?);';
@@ -52,8 +64,9 @@ const deleteItem = (req, res) => {
 }
 
 module.exports = { 
-  getAllItems,
-  getItemById,
+  // getAllItems,
+  getItemNameQuantityCategory,
+  // getItemById,
   createItem,
   deleteItem
 };

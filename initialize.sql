@@ -11,12 +11,18 @@ CREATE TABLE items (
     item_id INT NOT NULL AUTO_INCREMENT,
     item_name VARCHAR(45),
     quantity INT,
-    PRIMARY KEY (item_id)
+    category_id INT,
+    list_id INT,
+    PRIMARY KEY (item_id),
+    FOREIGN KEY (category_id)
+    REFERENCES (category_id),
+    FOREIGN KEY (list_id)
+    REFERENCES (list_id)
 );
 
 CREATE TABLE categories (
     category_id INT NOT NULL AUTO_INCREMENT,
-    catgeory_name VARCHAR(100),
+    catgeory_name VARCHAR(45),
     PRIMARY KEY (category_id),
 )
 
@@ -29,7 +35,10 @@ CREATE TABLE item_category (
 
 CREATE TABLE lists (
     list_id INT NOT NULL AUTO_INCREMENT,
-    list_name VARCHAR(100),
-    PRIMARY KEY (list_id)
+    list_name VARCHAR(45),
+    user_id INT,
+    PRIMARY KEY (list_id),
+    FOREIGN KEY (user_id)
+    REFERENCES (user_id)
 );
 

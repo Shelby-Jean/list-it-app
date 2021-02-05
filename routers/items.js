@@ -2,9 +2,11 @@ const express = require('express');
 const itemsController = require('../controllers/items');
 const router = express.Router();
 
-router.get('/', itemsController.getAllItems);
+router.get('/', itemsController.getItemNameQuantityCategory);
 
-router.get('/:id', itemsController.getItemById);
+// router.get('/', itemsController.getAllItems);
+
+// router.get('/:id', itemsController.getItemById);
 
 router.post('/add', itemsController.createItem);
 
