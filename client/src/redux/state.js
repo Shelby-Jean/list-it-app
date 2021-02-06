@@ -34,7 +34,7 @@ export default {
     },
     {
       category_id: 404,
-        ategory_name: "Meat/Seafood"
+      category_name: "Meat/Seafood"
     },
     {
       category_id: 2002,
@@ -75,6 +75,7 @@ export default {
       category_name: "Produce"
     }
   ]
+}
   // groceryList: {
   //   sublists: [
   //     {
@@ -148,4 +149,3 @@ export default {
   //     },
   //   ],
   // }
-}

@@ -9,6 +9,13 @@ const user = (state = null, action) => {
   }
 }
 
+const categories = (state = [], action) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+}
+
 const items = (state = [{}], action) => {
   switch (action.type) {
     case "GET_ITEMS":
@@ -22,4 +29,4 @@ const items = (state = [{}], action) => {
   }
 }
 
-export default combineReducers({ user, items })
+export default combineReducers({ user, categories, items })

@@ -2,21 +2,31 @@
   display: flex;
   margin: 8px;
   align-items: center;
+  justify-content: space-between;
 }
 
-/* .checkmark {
-  background-color: #6a994e;
+.checkmark-name-container {
+  display: flex;
+}
+
+.checkmark {
+  /* background-color: #6a994e; */
   margin-right: 10px;
-} */
+}
 
 .item-name {
   font-size: 14px;
   /* margin-right: 15px; */
 }
 
+.quantity-delete-container {
+  display: flex;
+  margin-right: 40px;
+}
+
 .quantity-container {
   display: flex;
-  /* margin-right: 40px; */
+  margin-right: 30px;
 }
 
 .item-quantity {
