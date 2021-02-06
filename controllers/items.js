@@ -64,8 +64,8 @@ const deleteItem = (req, res) => {
 }
 
 module.exports = { 
-  // getAllItems,
   getItemNameQuantityCategory,
+  // getAllItems,
   // getItemById,
   createItem,
   deleteItem

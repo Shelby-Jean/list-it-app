@@ -4,6 +4,10 @@
   margin: 20px 0;
 }
 
-/* .sublist-header {
-
-} */
+.category-header {
+  background-color: #386641;
+  color: white;
+  padding: 5px;
+  margin: 5px 0;
+  font-size: 14px;
+}

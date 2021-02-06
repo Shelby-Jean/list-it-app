@@ -11,14 +11,14 @@ export const getItems = () => {
   }
 }
 
-export const AddItem = (item) => {
+export const addItem = (item) => {
   return {
     type: "ADD_ITEM",
     value: item
   }
 }
 
-export const DELETEItem = (item) => {
+export const deleteItem = (item) => {
   return {
     type: "DELETE_ITEM",
     value: item

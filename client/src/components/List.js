@@ -1,4 +1,4 @@
-import Sublist from '../containers/Sublist';
+import Category from '../containers/Category';
 // import Item from '../containers/Item';
 import '../css/components/list-component.css';
 
@@ -8,7 +8,7 @@ const List = (props) => {
       <div className="list-header">
         <h3>Grocery List</h3>
       </div>
-      <Sublist />
+      <Category />
     </div>
   );
 }

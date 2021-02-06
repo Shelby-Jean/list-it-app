@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Item from '../components/Item';
+import Category from '../components/Category';
 //import actions
 
 const mapStateToProps = (state) => {
@@ -8,4 +8,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Item);
+export default connect(mapStateToProps)(Category);
