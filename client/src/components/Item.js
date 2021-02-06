@@ -1,14 +1,22 @@
 import { BsTrash } from 'react-icons/bs';
+import { AiOutlineMinusSquare, AiOutlinePlusSquare } from 'react-icons/ai';
 
 const Item = (props) => {
   return (
-    <div className="item-container">  
-      <input className= "checkmark" type="checkbox"/>
-      <p className="item-name">name</p>
-      <p className="item-quantity">quantity</p>
-      <BsTrash />
-    </div>
+    props.items.map(item => (
+      <div className="item-container" key={item.item_id}> 
+        <input className= "checkmark" type="checkbox"/>
+        <p className="item-name">{item.item_name}</p>
+        <div className="quantity-container">
+          <AiOutlineMinusSquare />
+          <p className="item-quantity">{item.quantity}</p>
+          <AiOutlinePlusSquare />
+        </div>
+          <BsTrash />
+      </div>
+    ))
   )
 }
 
 export default Item;
+

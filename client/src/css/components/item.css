@@ -1,0 +1,32 @@
+.item-container {
+  display: flex;
+  margin: 8px;
+  align-items: center;
+}
+
+/* .checkmark {
+  background-color: #6a994e;
+  margin-right: 10px;
+} */
+
+.item-name {
+  font-size: 14px;
+  /* margin-right: 15px; */
+}
+
+.quantity-container {
+  display: flex;
+  /* margin-right: 40px; */
+}
+
+.item-quantity {
+  font-size: 14px;
+  margin: 0 3px;
+}
+
+/* .delete-container {
+
+} */
+
+
+

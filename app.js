@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const usersRouter = require('./routers/users');
 const authRouter = require('./routers/auth');
 const listsRouter = require('./routers/lists');
+const categoriesRouter = require('./routers/categories');
 const itemsRouter = require('./routers/items');
 const { logger } = require('./middleware/auth');
 
@@ -14,6 +15,7 @@ app.use(logger);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.use('/lists', listsRouter);
+app.use('/categories', categoriesRouter);
 app.use('/items', itemsRouter);
 
 app.get('/', (req, res) => {

@@ -3,7 +3,7 @@ const pool = require('../sql/connection');
 const { handleSQLError } = require('../sql/error');
 
 getItemNameQuantityCategory = (req, res) => {
-  let sql = `SELECT items.item_name, items.quantity, categories.category_name 
+  let sql = `SELECT items.item_id, items.item_name, items.quantity, categories.category_name 
     FROM items INNER JOIN categories ON categories.category_id = items.category_id 
     ORDER BY item_name ASC`;
   pool.query(sql, (err, rows) => {

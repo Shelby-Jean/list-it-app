@@ -21,6 +21,7 @@ const ProtectedRoute = ({component: Component, ...rest}) => {
   )
 }
 
+//make list protected route
 const Router = () => {
   return (
     <Switch>

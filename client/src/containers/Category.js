@@ -4,6 +4,7 @@ import Category from '../components/Category';
 
 const mapStateToProps = (state) => {
   return {
+    categories: state.categories,
     items: state.items
   }
 }
