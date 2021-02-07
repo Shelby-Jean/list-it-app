@@ -25,10 +25,10 @@ const LogIn = (props) => {
 
   return (
     <div>
-      <form className="form" onSubmit={login}>
+      <form className="auth-form" onSubmit={login}>
         <input 
           required
-          className="input" 
+          className="auth-input" 
           type="text" 
           placeholder="username"
           value={username}
@@ -36,13 +36,13 @@ const LogIn = (props) => {
         />
         <input 
           required
-          className="input" 
+          className="auth-input" 
           type="password" 
           placeholder="password"
           value={password}
           onChange={handlePassword}
         />
-        <button className="button" type="submit">LOG IN</button>
+        <button className="auth-button" type="submit">LOG IN</button>
       </form>
       {/* <div className="login-signup-alt">
         <p>Don't have an account? Sign up here!</p>

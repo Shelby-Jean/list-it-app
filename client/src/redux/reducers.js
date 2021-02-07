@@ -18,12 +18,14 @@ const categories = (state = [], action) => {
 
 const items = (state = [{}], action) => {
   switch (action.type) {
-    case "GET_ITEMS":
-      return {...state};
+    // case "GET_ITEMS":
+    //   return {...state};
       case "ADD_ITEM":
-      return action.value;
+      return [...state, action.value];
       case "DELETE_ITEM":
-      return action.value;
+      const newState = [...state];
+      const filteredState = newState.filter(item => item.item_id !== action.value)
+      return filteredState;
     default:
       return state;
   }

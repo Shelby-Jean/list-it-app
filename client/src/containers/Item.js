@@ -1,11 +1,19 @@
+import { format } from 'mysql';
 import { connect } from 'react-redux';
 import Item from '../components/Item';
-//import actions
+import { deleteItem } from '../redux/actions';
 
 const mapStateToProps = (state) => {
   return {
+    categories: state.categories,
     items: state.items
   }
 }
 
-export default connect(mapStateToProps)(Item);
+const mapDisptachToProps = (dispatch) => {
+  return {
+    deleteItem: (id) => dispatch(deleteItem(id))
+  }
+}
+
+export default connect(mapStateToProps, mapDisptachToProps)(Item);

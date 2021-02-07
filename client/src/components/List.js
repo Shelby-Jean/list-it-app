@@ -1,5 +1,4 @@
 import Category from '../containers/Category';
-import Item from '../containers/Item';
 
 const List = (props) => {
   return (
@@ -7,8 +6,7 @@ const List = (props) => {
       <div className="list-header">
         <h3>Grocery List</h3>
       </div>
-      {/* <Category /> */}
-      <Item />
+      <Category />
     </div>
   );
 }
