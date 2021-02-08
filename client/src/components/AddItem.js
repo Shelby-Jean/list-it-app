@@ -29,7 +29,7 @@ const AddItem = (props) => {
           className="add-input"
           onChange={handleTextChange}
         />
-        <button className="add-button" type="submit">ADD ITEM</button>
+        <button className="add-button" type="submit">ADD</button>
       </form>
     </div>
   );
