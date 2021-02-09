@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import List from '../components/List';
-//import actions
+import { getItems, getCategories } from '../redux/actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -8,4 +8,11 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(List);
+const mapDisptachToProps = (dispatch) => {
+  return {    
+    getItems: () => dispatch(getItems()),
+    getCategories: () => dispatch(getCategories()),
+  }
+}
+
+export default connect(mapStateToProps, mapDisptachToProps)(List);

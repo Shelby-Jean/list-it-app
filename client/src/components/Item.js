@@ -2,8 +2,6 @@ import { BsTrash } from 'react-icons/bs';
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from 'react-icons/ai';
 
 const Item = (props) => {
-
-
   return (
     props.items.map(item => (
       <div className="item-container" key={item.item_id}> 

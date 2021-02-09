@@ -1,7 +1,6 @@
-import { format } from 'mysql';
 import { connect } from 'react-redux';
 import Item from '../components/Item';
-import { deleteItem } from '../redux/actions';
+import { getItems, deleteItem } from '../redux/actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -11,7 +10,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDisptachToProps = (dispatch) => {
-  return {
+  return {    
     deleteItem: (id) => dispatch(deleteItem(id))
   }
 }

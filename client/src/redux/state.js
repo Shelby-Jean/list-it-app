@@ -3,78 +3,81 @@ export default {
     username: "",
     password: ""
   },
-  categories: [
-    {
-      category_id: 303,
-      category_name: "Bakery"
-    },
-    {
-      category_id: 808,
-      category_name: "Beverages"
-    },
-    {
-      category_id: 505,
-      category_name: "Canned Goods"
-    },
-    {
-      category_id: 202,
-      category_name: "Dairy"
-    },
-    {
-      category_id: 606,
-      category_name: "Dry/Baking Goods"
-    },
-    {
-      category_id: 707,
-      category_name: "Frozen Foods"
-    },
-    {
-      category_id: 909,
-      category_name: "Household Supplies"
-    },
-    {
-      category_id: 404,
-      category_name: "Meat/Seafood"
-    },
-    {
-      category_id: 2002,
-      category_name: "Other"
-    },
-    {
-      category_id: 1001,
-      category_name: "Personal Care"
-    },
-    {
-      category_id: 101,
-      category_name: "Produce"
-    }
-  ],
-  items: [
-    {
-      item_id: 5,
-      item_name: "apples",
-      quantity: 1,
-      category_name: "Produce"
-    },
-    {
-      item_id: 3,
-      item_name: "bread",
-      quantity: 1,
-      category_name: "Bakery"
-    },
-    {
-      item_id: 4,
-      item_name: "milk",
-      quantity: 1,
-      category_name: "Dairy"
-    },
-    {
-      item_id: 6,
-      item_name: "tomato",
-      quantity: 2,
-      category_name: "Produce"
-    }
-  ]
+  list: [],
+  categories: [],
+  // [
+  //   {
+  //     category_id: 303,
+  //     category_name: "Bakery"
+  //   },
+  //   {
+  //     category_id: 808,
+  //     category_name: "Beverages"
+  //   },
+  //   {
+  //     category_id: 505,
+  //     category_name: "Canned Goods"
+  //   },
+  //   {
+  //     category_id: 202,
+  //     category_name: "Dairy"
+  //   },
+  //   {
+  //     category_id: 606,
+  //     category_name: "Dry/Baking Goods"
+  //   },
+  //   {
+  //     category_id: 707,
+  //     category_name: "Frozen Foods"
+  //   },
+  //   {
+  //     category_id: 909,
+  //     category_name: "Household Supplies"
+  //   },
+  //   {
+  //     category_id: 404,
+  //     category_name: "Meat/Seafood"
+  //   },
+  //   {
+  //     category_id: 2002,
+  //     category_name: "Other"
+  //   },
+  //   {
+  //     category_id: 1001,
+  //     category_name: "Personal Care"
+  //   },
+  //   {
+  //     category_id: 101,
+  //     category_name: "Produce"
+  //   }
+  // ],
+  items: []
+  // [
+  //   {
+  //     item_id: 5,
+  //     item_name: "apples",
+  //     quantity: 1,
+  //     category_name: "Produce"
+  //   },
+  //   {
+  //     item_id: 3,
+  //     item_name: "bread",
+  //     quantity: 1,
+  //     category_name: "Bakery"
+  //   },
+  //   {
+  //     item_id: 4,
+  //     item_name: "milk",
+  //     quantity: 1,
+  //     category_name: "Dairy"
+  //   },
+  //   {
+  //     item_id: 6,
+  //     item_name: "tomato",
+  //     quantity: 2,
+  //     category_name: "Produce"
+  //   }
+  // ]
 }
   // groceryList: {
   //   sublists: [

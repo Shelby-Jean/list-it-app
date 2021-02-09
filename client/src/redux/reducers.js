@@ -11,18 +11,30 @@ const user = (state = null, action) => {
 
 const categories = (state = [], action) => {
   switch (action.type) {
+    case "GET_CATEGORIES":
+      return action.value;
     default:
       return state;
   }
 }
 
-const items = (state = [{}], action) => {
+// const list = (state = [], action) => {
+//   switch (action.type) {
+//     case "GET_LIST":
+//       console.log(action.value);
+//       return action.value;
+//     default:
+//       return state;
+//   }
+// }
+
+const items = (state = [], action) => {
   switch (action.type) {
-    // case "GET_ITEMS":
-    //   return {...state};
-      case "ADD_ITEM":
+    case "GET_ITEMS":
+      return action.value;
+    case "ADD_ITEM":
       return [...state, action.value];
-      case "DELETE_ITEM":
+    case "DELETE_ITEM":
       const newState = [...state];
       const filteredState = newState.filter(item => item.item_id !== action.value)
       return filteredState;
