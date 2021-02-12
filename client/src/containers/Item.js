@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Item from '../components/Item';
-import { getItems, deleteItem } from '../redux/actions';
+import { deleteItem } from '../redux/actions';
 
 const mapStateToProps = (state) => {
   return {

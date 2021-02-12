@@ -1,9 +1,58 @@
+import axios from 'axios';
+
 export const setUser = (user) => {
   return {
     type: "SET_USER",
     value: user
   }
 }
+
+export const getCategories = () => dispatch => {
+  axios.get('/categories')
+      .then(res => dispatch({
+        type: "GET_CATEGORIES",
+        value: res.data
+        })
+      )
+}
+
+export const getItems = () => dispatch => {
+  axios.get('/items')
+      .then(res => dispatch({
+        type: "GET_ITEMS",
+        value: res.data
+        })
+      )
+}
+
+export const addItem = (item) => {
+  return {
+    type: "ADD_ITEM",
+    value: item
+  }
+}
+
+export const deleteItem = (id) => {
+  return {
+    type: "DELETE_ITEM",
+    value: id
+  }
+}
+
+
+// export const getItems = () => {
+//   return (dispatch) => {
+//     fetch('/items')
+//       .then(response => response.json())
+//       .then(data => {
+//         const action = {
+//           type: "GET_ITEMS",
+//           value: data
+//         }
+//         dispatch(action)
+//       })
+//   }
+// }
 
 // export const getList = async () => {
 //   const categories = await fetch('/categories')
@@ -46,45 +95,3 @@ export const setUser = (user) => {
 //       dispatch(action);
 //     }
 // }
-
-export const getCategories = () => {
-  return (dispatch) => {
-    fetch('/categories')
-      .then(response => response.json())
-      .then(data => {
-        const action = {
-          type: "GET_CATEGORIES",
-          value: data
-        }
-        dispatch(action)
-      })
-  }
-}
-
-export const getItems = () => {
-  return (dispatch) => {
-    fetch('/items')
-      .then(response => response.json())
-      .then(data => {
-        const action = {
-          type: "GET_ITEMS",
-          value: data
-        }
-        dispatch(action)
-      })
-  }
-}
-
-export const addItem = (item) => {
-  return {
-    type: "ADD_ITEM",
-    value: item
-  }
-}
-
-export const deleteItem = (id) => {
-  return {
-    type: "DELETE_ITEM",
-    value: id
-  }
-}

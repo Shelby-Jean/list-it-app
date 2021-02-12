@@ -18,16 +18,6 @@ const categories = (state = [], action) => {
   }
 }
 
-// const list = (state = [], action) => {
-//   switch (action.type) {
-//     case "GET_LIST":
-//       console.log(action.value);
-//       return action.value;
-//     default:
-//       return state;
-//   }
-// }
-
 const items = (state = [], action) => {
   switch (action.type) {
     case "GET_ITEMS":
