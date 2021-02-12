@@ -25,11 +25,12 @@ export const getItems = () => dispatch => {
       )
 }
 
-export const addItem = (item) => {
-  return {
-    type: "ADD_ITEM",
-    value: item
-  }
+export const addItem = (item) => dispatch => {
+  axios.post('/items/add', item)
+    .then(res => dispatch({
+      type: "ADD_ITEM",
+      value: res.data
+    }))
 }
 
 export const deleteItem = (id) => {
@@ -53,6 +54,7 @@ export const deleteItem = (id) => {
 //       })
 //   }
 // }
+
 
 // export const getList = async () => {
 //   const categories = await fetch('/categories')

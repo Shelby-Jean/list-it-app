@@ -44,7 +44,7 @@ const createItem = (req, res) => {
       return handleSQLError(res, err);
     }
     return res.json({
-      newId: results.insertId,
+      item_id: results.insertId,
       item_name: req.body.item_name,
       quantity: req.body.quantity
     });
