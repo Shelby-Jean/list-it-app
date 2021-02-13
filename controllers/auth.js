@@ -5,22 +5,46 @@ const pool = require('../sql/connection');
 const { handleSQLError } = require('../sql/error');
 
 // for bcrypt
-const saltRounds = 10;
+// const saltRounds = 10;
+
+// const signup = (req, res) => {
+//   const { username, password } = req.body;
+//   let sql = 'INSERT INTO users (username, password) VALUES (?, ?)';
+
+//   bcrypt.hash(password, saltRounds, function(err, hash) {
+//     sql = mysql.format(sql, [ username, hash ]);
+
+//     pool.query(sql, (err, res) => {
+//       if (err) {
+//         if (err.code === 'ER_DUP_ENTRY') {
+//           return res.status(409).send('This username is already registered.');
+//         }
+//       }
+//       return res.send('Sign-up successful');
+//     })
+//   })
+// }
+
+const saltRounds = 10
 
 const signup = (req, res) => {
   const { username, password } = req.body;
-  let sql = 'INSERT INTO users (username, password) VALUES (?, ?)';
+  let sql = "INSERT INTO users (username, password) VALUES (?, ?);"
 
   bcrypt.hash(password, saltRounds, function(err, hash) {
-    sql = mysql.format(sql, [ username, hash ]);
-
-    pool.query(sql, (err, res) => {
+    sql = mysql.format(sql, [username, hash]);
+ 
+    pool.query(sql, (err, results) => {
       if (err) {
-        if (err.code === 'ER_DUP_ENTRY') {
-          return res.status(409).send('This username is already registered.');
-        }
+        if (err.code === 'ER_DUP_ENTRY') return res.status(409).send('Username is taken')
+        return handleSQLError(res, err)
       }
-      return res.send('Sign-up successful');
+      // req.body.userId = result.insertId;
+      return res.json({ msg: 'User created',
+        user_id: results.insertId,
+        username: username,
+        password: hash
+      })
     })
   })
 }
@@ -50,7 +74,9 @@ const login = (req, res) => {
         const token = jwt.sign(data, 'secret');
         res.json({
           msg: 'Login successful',
-          token
+          token,
+          user_id: data.id,
+          username: data.username
         })
       })
   })

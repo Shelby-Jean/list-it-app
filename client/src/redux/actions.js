@@ -27,17 +27,19 @@ export const getItems = () => dispatch => {
 
 export const addItem = (item) => dispatch => {
   axios.post('/items/add', item)
-    .then(res => dispatch({
+    .then(res => {
+      dispatch({
       type: "ADD_ITEM",
-      value: res.data
-    }))
+      value: item
+    })})
 }
 
-export const deleteItem = (id) => {
-  return {
-    type: "DELETE_ITEM",
-    value: id
-  }
+export const deleteItem = (id) => dispatch => {
+  axios.delete(`/items/delete/${id}`)
+    .then(res => dispatch({
+      type: "DELETE_ITEM",
+      value: id
+    }))
 }
 
 

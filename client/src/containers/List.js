@@ -4,7 +4,8 @@ import { getItems, getCategories } from '../redux/actions';
 
 const mapStateToProps = (state) => {
   return {
-    items: state.items
+    items: state.items,
+    categories: state.categories
   }
 }
 

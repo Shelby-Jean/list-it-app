@@ -36,8 +36,8 @@ getItemNameQuantityCategory = (req, res) => {
 // };
 
 const createItem = (req, res) => {
-  let sql = 'INSERT INTO items (item_name, quantity) VALUES (?, ?);';
-  sql = mysql.format(sql, [req.body.item_name, req.body.quantity]);
+  let sql = 'INSERT INTO items (item_name, quantity, category_id) VALUES (?, ?, ?);';
+  sql = mysql.format(sql, [req.body.item_name, req.body.quantity, req.body.category_id]);
 
   pool.query(sql, (err, results) => {
     if (err) {
@@ -46,7 +46,8 @@ const createItem = (req, res) => {
     return res.json({
       item_id: results.insertId,
       item_name: req.body.item_name,
-      quantity: req.body.quantity
+      quantity: req.body.quantity,
+      category_id: req.body.category_id
     });
   })
 }

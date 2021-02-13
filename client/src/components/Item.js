@@ -3,25 +3,23 @@ import { AiOutlineMinusSquare, AiOutlinePlusSquare } from 'react-icons/ai';
 
 const Item = (props) => {
   return (
-    props.items.map(item => (
-      <div className="item-container" key={item.item_id}> 
+      <div className="item-container"> 
 
         <div className="checkmark-name-container">
           <input className= "checkmark" type="checkbox"/>
-          <p className="item-name">{item.item_name}</p>
+          <p className="item-name">{props.itemName}</p>
         </div>
 
         <div className="quantity-delete-container">
           <div className="quantity-container">
             <AiOutlineMinusSquare />
-            <p className="item-quantity">{item.quantity}</p>
+            <p className="item-quantity">{props.quantity}</p>
             <AiOutlinePlusSquare />
           </div>
-          <BsTrash onClick={() => props.deleteItem(item.item_id)} />
+          <BsTrash onClick={() => props.deleteItem(props.itemId)} />
         </div>
 
       </div>
-    ))
   )
 }
 

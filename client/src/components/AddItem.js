@@ -1,15 +1,15 @@
 // import { MdAddShoppingCart } from 'react-icons/md';
 import { useState } from 'react';
-// import {v4 as uuid} from 'uuid';
 
 const AddItem = (props) => {
   const [newItem, setNewItem] = useState({});
 
   const handleTextChange = (e) => {
+    console.log(props.catId);
     setNewItem({
-      // item_id: uuid(),
       item_name: e.target.value,
       quantity: 1,
+      category_id: props.catId
     });
   }
 
