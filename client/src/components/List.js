@@ -12,7 +12,6 @@ class List extends React.Component {
   }
 
   render() {
-    console.log(this);
     return (
       <div className="list-container">
         <div className="list-header">
