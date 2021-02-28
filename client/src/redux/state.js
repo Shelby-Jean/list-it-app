@@ -1,8 +1,5 @@
 export default {
-  user: {
-    username: "",
-    password: ""
-  },
+  users: [],
   categories: [],
   items: []
 }

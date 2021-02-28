@@ -1,7 +1,23 @@
-export const setUser = (user) => {
-  return {
-    type: "SET_USER",
-    value: user
+export const signUp = (user) => {
+  return (dispatch) => {
+    fetch('/auth/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user),
+    })
+    .then(response => response.json())
+    .then(data => {
+      const action = {
+        type: "SIGN_UP",
+        value: data
+      }
+      dispatch(action)
+    })
+    .catch((error) => {
+      console.log('Error:', error);
+    });
   }
 }
 
@@ -16,6 +32,9 @@ export const getCategories = () => {
         }
         dispatch(action)
       })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }
 }
 
@@ -30,6 +49,9 @@ export const getItems = () => {
         }
         dispatch(action)
       })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }
 }
 
@@ -50,6 +72,9 @@ export const addItem = (item) => {
         }
         dispatch(action)
       })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }
 }
 
@@ -71,6 +96,9 @@ export const deleteItem = (id) => {
         }
         dispatch(action)
       })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }
 
 }

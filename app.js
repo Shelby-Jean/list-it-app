@@ -8,6 +8,7 @@ const itemsRouter = require('./routers/items');
 const { logger } = require('./middleware/auth');
 
 const app = express();
+// require('dotenv').config();
 const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());

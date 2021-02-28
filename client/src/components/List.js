@@ -18,7 +18,7 @@ class List extends React.Component {
           <h3>Grocery List</h3>
         </div>
         {this.props.categories.map(category => {
-          return <Category catName={category.category_name} catId={category.category_id} />
+          return <Category catName={category.category_name} catId={category.category_id} key={category.category_id} />
         })}
       </div>
     );

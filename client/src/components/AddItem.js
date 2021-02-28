@@ -5,7 +5,7 @@ const AddItem = (props) => {
   const [newItem, setNewItem] = useState({});
 
   const handleTextChange = (e) => {
-    console.log(props.catId);
+    // console.log(props.catId);
     setNewItem({
       item_name: e.target.value,
       quantity: 1,

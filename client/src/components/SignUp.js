@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-const SignUp = () => {
+const SignUp = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  let history = useHistory();
 
   const handleUsername = (e) => {
     setUsername(e.target.value);
@@ -15,22 +18,16 @@ const SignUp = () => {
   const signup = (e) => {
     e.preventDefault();
     const newUser = {username, password}
-    const options = {
-      method: 'POST',
-      header: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newUser)
-    };
-    fetch('/auth/signup', options);
+    props.signUp(newUser);
+    history.push("/login");
   }
 
   return (
     <div>
-      <form className="form" onSubmit={signup}>
+      <form className="auth-form" onSubmit={signup}>
         <input 
           required
-          className="input" 
+          className="auth-input" 
           type="text" 
           placeholder="username"
           value={username}
@@ -38,13 +35,13 @@ const SignUp = () => {
         />
         <input 
           required
-          className="input"
+          className="auth-input"
           type="password"
           placeholder="password"
           value={password}
           onChange={handlePassword}
         />
-        <button className="button" type="submit">SIGN UP</button>
+        <button className="auth-button" type="submit">SIGN UP</button>
       </form>
       {/* <div className="login-signup-alt">
         <p>Already have an account? Log in here!</p>
