@@ -10,6 +10,8 @@ router.get('/', itemsController.getItemNameQuantityCategory);
 
 router.post('/add', itemsController.createItem);
 
-router.delete('/delete/:id', itemsController.deleteItem);
+router.delete('/delete/:name', itemsController.deleteItem);
+
+router.patch('updatequantity/:name', itemsController.updateItemQuantity);
 
 module.exports = router;

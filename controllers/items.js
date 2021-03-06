@@ -5,7 +5,7 @@ const { handleSQLError } = require('../sql/error');
 getItemNameQuantityCategory = (req, res) => {
   let sql = `SELECT items.item_id, items.item_name, items.quantity, categories.category_name 
     FROM items INNER JOIN categories ON categories.category_id = items.category_id 
-    ORDER BY item_name ASC`;
+    ORDER BY item_name ASC;`;
   pool.query(sql, (err, rows) => {
     if (err) {
       return handleSQLError(res, err);
@@ -53,7 +53,7 @@ const createItem = (req, res) => {
 }
 
 const deleteItem = (req, res) => {
-  let sql = 'DELETE FROM items WHERE item_name = ?';
+  let sql = 'DELETE FROM items WHERE item_name = ?;';
   sql = mysql.format(sql, [req.body.item_name]);
 
   pool.query(sql, (err, results) => {
@@ -64,10 +64,23 @@ const deleteItem = (req, res) => {
   })
 }
 
+const updateItemQuantity = (req, res) => {
+  let sql = 'UPDATE items SET quantity = ? WHERE item_name = ?;';
+  sql = mysql.format(sql, [req.body.quantity, req.body.item_name]);
+
+  pool.query(sql, (err, results) => {
+    if (err) {
+      return handleSQLError(res,err);
+    }
+    return res.json({ message: `Updated ${results.affectedRows} item(s)`});
+  })
+}
+
 module.exports = { 
   getItemNameQuantityCategory,
   // getAllItems,
   // getItemById,
   createItem,
-  deleteItem
+  deleteItem,
+  updateItemQuantity
 };

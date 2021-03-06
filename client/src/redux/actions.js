@@ -100,5 +100,12 @@ export const deleteItem = (id) => {
         console.error('Error:', error);
       });
   }
+}
 
+export const decreaseQuantity = () => {
+
+}
+
+export const increaseQuantity = () => {
+  
 }

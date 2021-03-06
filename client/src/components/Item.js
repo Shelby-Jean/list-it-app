@@ -12,9 +12,9 @@ const Item = (props) => {
 
         <div className="quantity-delete-container">
           <div className="quantity-container">
-            <AiOutlineMinusSquare />
+            <AiOutlineMinusSquare onClick={() => props.decreaseQuantity()} />
             <p className="item-quantity">{props.quantity}</p>
-            <AiOutlinePlusSquare />
+            <AiOutlinePlusSquare onClick={() => props.increaseQuantity()} />
           </div>
           <BsTrash onClick={() => props.deleteItem(props.itemId)} />
         </div>
