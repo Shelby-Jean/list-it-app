@@ -4,6 +4,8 @@ const users = (state = [], action) => {
   switch (action.type) {
     case "SIGN_UP":
       return action.value;
+    case "LOG_IN":
+      return action.value;  
     default:
       return state;
   }

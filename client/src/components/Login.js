@@ -18,9 +18,9 @@ const LogIn = (props) => {
   const login = (e) => {
     e.preventDefault();
     const user = {username, password};
-    document.cookie = "loggedIn=true;max-age=60*1000";
-    //add token?
-    props.setUser(user);
+    // document.cookie = "loggedIn=true;max-age=60*1000";
+    // document.cookie = 
+    props.logIn(user);
     history.push("/list");
   }
 

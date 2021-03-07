@@ -1,3 +1,5 @@
+import cookie from 'cookie';
+
 export const signUp = (user) => {
   return (dispatch) => {
     fetch('/auth/signup', {
@@ -11,6 +13,35 @@ export const signUp = (user) => {
     .then(data => {
       const action = {
         type: "SIGN_UP",
+        value: data
+      }
+      dispatch(action)
+    })
+    .catch((error) => {
+      console.log('Error:', error);
+    });
+  }
+}
+
+const getToken = () => {
+  const cookies = cookie.parse(document.cookie);
+  return cookies["token"];
+}
+
+export const logIn = (user) => {
+  return (dispatch) => {
+    fetch('/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization': getToken()
+      },
+      body: JSON.stringify(user),
+    })
+    .then(response => response.json())
+    .then(data => {
+      const action = {
+        type: "LOG_IN",
         value: data
       }
       dispatch(action)

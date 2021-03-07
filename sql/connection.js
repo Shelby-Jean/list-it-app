@@ -1,4 +1,6 @@
 const mysql = require('mysql');
+// const dotenv = require('dotenv');
+// dotenv.config();
 
 class Connection {
   constructor() {
@@ -11,11 +13,6 @@ class Connection {
         user: 'listit',
         password: 'Eq1pq-8bjM?S',
         database: 'listit'
-      };
-
-      if (process.env.NODE_END === 'production' && process.env.CLOUD_INSTANCE) {
-        console.log(`connect socket: ${process.env.CLOUD_INSTANCE}`)
-        config.socketPath = `/cloudsql/${process.env.CLOUD_INSTANCE}`
       };
 
       this.pool = mysql.createPool(config);

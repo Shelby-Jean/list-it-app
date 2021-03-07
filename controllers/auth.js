@@ -37,7 +37,6 @@ const login = (req, res) => {
     if (!rows.length) {
       return res.status(404).send('No matching users');
     }
-    console.log(rows);
     const hash = rows[0].password;
     bcrypt.compare(password, hash)
       .then(result => {
