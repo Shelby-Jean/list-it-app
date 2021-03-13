@@ -1,5 +1,6 @@
 const express = require('express');
 const listsController = require('../controllers/lists');
+// const { authenticate } = require('../middleware/auth');
 const router = express.Router();
 
 router.get('/', listsController.getAllLists);

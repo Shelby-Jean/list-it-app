@@ -30,6 +30,9 @@ const items = (state = [], action) => {
       const newState = [...state];
       const filteredState = newState.filter(item => item.item_id !== action.value)
       return filteredState;
+    case "DECREASE_QUANTITY":
+      console.log(action.value, state);
+      return state;
     default:
       return state;
   }

@@ -40,6 +40,7 @@ export const logIn = (user) => {
     })
     .then(response => response.json())
     .then(data => {
+      // const token = data.token;
       const action = {
         type: "LOG_IN",
         value: data
@@ -117,7 +118,6 @@ export const deleteItem = (id) => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: id
     })
       .then(response => response.json())
       .then(data => {
@@ -133,8 +133,28 @@ export const deleteItem = (id) => {
   }
 }
 
-export const decreaseQuantity = () => {
-
+export const decreaseQuantity = (id, quantity) => {
+  console.log(quantity, id)
+  return (dispatch) => {
+    fetch(`/items/updatequantity/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: quantity
+    })
+      .then(response => response.json())
+      .then(data => {
+        const action = {
+          type: "DECREASE_QUANTITY",
+          value: data
+        }
+        dispatch(action)
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
 }
 
 export const increaseQuantity = () => {

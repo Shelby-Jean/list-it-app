@@ -53,8 +53,8 @@ const createItem = (req, res) => {
 }
 
 const deleteItem = (req, res) => {
-  let sql = 'DELETE FROM items WHERE item_name = ?;';
-  sql = mysql.format(sql, [req.body.item_name]);
+  let sql = 'DELETE FROM items WHERE item_id = ?;';
+  sql = mysql.format(sql, [req.params.id]);
 
   pool.query(sql, (err, results) => {
     if (err) {
@@ -65,8 +65,8 @@ const deleteItem = (req, res) => {
 }
 
 const updateItemQuantity = (req, res) => {
-  let sql = 'UPDATE items SET quantity = ? WHERE item_name = ?;';
-  sql = mysql.format(sql, [req.body.quantity, req.body.item_name]);
+  let sql = 'UPDATE items SET quantity = ? WHERE item_id = ?;';
+  sql = mysql.format(sql, [req.body.quantity, req.params.id]);
 
   pool.query(sql, (err, results) => {
     if (err) {

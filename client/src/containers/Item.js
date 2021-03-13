@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Item from '../components/Item';
-import { deleteItem } from '../redux/actions';
+import { deleteItem, decreaseQuantity, increaseQuantity } from '../redux/actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -11,7 +11,9 @@ const mapStateToProps = (state) => {
 
 const mapDisptachToProps = (dispatch) => {
   return {    
-    deleteItem: (id) => dispatch(deleteItem(id))
+    deleteItem: (id) => dispatch(deleteItem(id)),
+    decreaseQuantity: (id, quantity) => dispatch(decreaseQuantity(id, quantity)),
+    increaseQuantity: (id, quantity) => dispatch(increaseQuantity(id, quantity))
   }
 }
 

@@ -1,5 +1,6 @@
 const express = require('express');
 const itemsController = require('../controllers/items');
+// const { authenticate } = require('../middleware/auth');
 const router = express.Router();
 
 router.get('/', itemsController.getItemNameQuantityCategory);
@@ -10,8 +11,8 @@ router.get('/', itemsController.getItemNameQuantityCategory);
 
 router.post('/add', itemsController.createItem);
 
-router.delete('/delete/:name', itemsController.deleteItem);
+router.delete('/delete/:id', itemsController.deleteItem);
 
-router.patch('updatequantity/:name', itemsController.updateItemQuantity);
+router.patch('/updatequantity/:id', itemsController.updateItemQuantity);
 
 module.exports = router;
