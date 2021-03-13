@@ -8,7 +8,7 @@ const Category = (props) => {
           <h3 className="category-header">{props.catName}</h3>
         </div>
       {props.items.map(item => {
-        if(item.category_name === props.catName) {
+        if(item.category_id === props.catId) {
           return <Item 
                     itemName={item.item_name} 
                     quantity={item.quantity} 
