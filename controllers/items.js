@@ -60,7 +60,7 @@ const deleteItem = (req, res) => {
     if (err) {
       return handleSQLError(res, err);
     }
-    return res.json({ message: `Deleted ${results.affectedRows} item(s)`});
+    return res.json({ item_id: req.params.id });
   })
 }
 
@@ -72,7 +72,10 @@ const updateItemQuantity = (req, res) => {
     if (err) {
       return handleSQLError(res,err);
     }
-    return res.json({ message: `Updated ${results.affectedRows} item(s)`});
+    return res.json({ 
+      quantity: req.body.quantity,
+      item_id: req.params.id
+     });
   })
 }
 

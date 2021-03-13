@@ -28,7 +28,7 @@ const items = (state = [], action) => {
       return [...state, action.value];
     case "DELETE_ITEM":
       const newState = [...state];
-      const filteredState = newState.filter(item => item.item_id !== action.value)
+      const filteredState = newState.filter(item => item.item_id != action.value.item_id);
       return filteredState;
     case "DECREASE_QUANTITY":
       console.log(action.value, state);

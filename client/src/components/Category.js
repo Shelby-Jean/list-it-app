@@ -9,7 +9,12 @@ const Category = (props) => {
         </div>
       {props.items.map(item => {
         if(item.category_name === props.catName) {
-          return <Item itemName={item.item_name} quantity={item.quantity} itemId={item.item_id} key={item.item_id} />
+          return <Item 
+                    itemName={item.item_name} 
+                    quantity={item.quantity} 
+                    itemId={item.item_id} 
+                    key={item.item_id}
+                  />
         }
       })}
       <AddItem catId={props.catId} />

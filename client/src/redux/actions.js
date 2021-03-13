@@ -38,7 +38,7 @@ export const logIn = (user) => {
       },
       body: JSON.stringify(user),
     })
-    .then(response => response.json())
+    .then(response => console.log(response.json()))
     .then(data => {
       // const token = data.token;
       const action = {
