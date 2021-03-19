@@ -6,7 +6,7 @@ class Item extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      quantity: 1
+      quantity: this.props.quantity
     }
   }
 
@@ -15,7 +15,11 @@ class Item extends React.Component {
       this.setState({
         quantity: this.state.quantity - 1
       })
-      this.props.decreaseQuantity(id, this.state.quantity)
+      const updatedItem = {
+        item_id: id,
+        quantity: this.state.quantity
+      }
+      this.props.decreaseQuantity(updatedItem);
     }
   }
 
@@ -23,7 +27,11 @@ class Item extends React.Component {
     this.setState({
       quantity: this.state.quantity + 1
     })
-    this.props.increaseQuantity(id, this.state.quantity)
+    const updatedItem = {
+      item_id: id,
+      quantity: this.state.quantity
+    }
+    this.props.increaseQuantity(updatedItem);
   }
 
   render() {

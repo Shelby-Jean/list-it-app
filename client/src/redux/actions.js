@@ -1,3 +1,4 @@
+import { json } from 'body-parser';
 import cookie from 'cookie';
 
 export const signUp = (user) => {
@@ -133,18 +134,18 @@ export const deleteItem = (id) => {
   }
 }
 
-export const decreaseQuantity = (id, quantity) => {
-  console.log(quantity, id)
+export const decreaseQuantity = (updatedItem) => {
   return (dispatch) => {
-    fetch(`/items/updatequantity/${id}`, {
+    fetch(`/items/updatequantity/${updatedItem.item_id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: quantity
+      body: JSON.stringify(updatedItem)
     })
       .then(response => response.json())
       .then(data => {
+        console.timeLog(data)
         const action = {
           type: "DECREASE_QUANTITY",
           value: data
@@ -157,6 +158,25 @@ export const decreaseQuantity = (id, quantity) => {
   }
 }
 
-export const increaseQuantity = () => {
-  
+export const increaseQuantity = (updatedItem) => {
+  return (dispatch) => {
+    fetch(`/items/updatequantity/${updatedItem.item_id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedItem)
+    })
+      .then(response => response.json())
+      .then(data => {
+        const action = {
+          type: "INCREASE_QUANTITY",
+          value: data
+        }
+        dispatch(action)
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
 }

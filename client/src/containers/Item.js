@@ -12,8 +12,8 @@ const mapStateToProps = (state) => {
 const mapDisptachToProps = (dispatch) => {
   return {    
     deleteItem: (id) => dispatch(deleteItem(id)),
-    decreaseQuantity: (id, quantity) => dispatch(decreaseQuantity(id, quantity)),
-    increaseQuantity: (id, quantity) => dispatch(increaseQuantity(id, quantity))
+    decreaseQuantity: (updatedItem) => dispatch(decreaseQuantity(updatedItem)),
+    increaseQuantity: (updatedItem) => dispatch(increaseQuantity(updatedItem))
   }
 }
 
