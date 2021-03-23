@@ -18,7 +18,10 @@ class Item extends React.Component {
       }, () => {
         const updatedItem = {
           item_id: id,
-          quantity: this.state.quantity
+          item_name: this.props.itemName,
+          quantity: this.state.quantity,
+          checked: this.props.checked,
+          category_id: this.props.catId
         };
         this.props.decreaseQuantity(updatedItem);
       });
@@ -27,11 +30,14 @@ class Item extends React.Component {
 
   increaseQuantity = (id) => {
     this.setState({
-      quantity: this.state.quantity++
+      quantity: this.state.quantity + 1
     }, () => {
       const updatedItem = {
         item_id: id,
-        quantity: this.state.quantity
+        item_name: this.props.itemName,
+        quantity: this.state.quantity,
+        checked: this.props.checked,
+        category_id: this.props.catId
       };
       this.props.increaseQuantity(updatedItem);
     });

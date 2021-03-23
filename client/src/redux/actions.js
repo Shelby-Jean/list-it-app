@@ -158,6 +158,7 @@ export const decreaseQuantity = (updatedItem) => {
 }
 
 export const increaseQuantity = (updatedItem) => {
+  console.log(updatedItem)
   return (dispatch) => {
     fetch(`/items/updatequantity/${updatedItem.item_id}`, {
       method: 'PATCH',

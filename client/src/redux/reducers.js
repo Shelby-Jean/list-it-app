@@ -35,8 +35,8 @@ const items = (state = [], action) => {
     //   // const s = [...state];
     //   // const updatedS = s.find(item => item.item_id == action.value.item_id ? )
     //   return state;
-    // case "INCREASE_QUANTITY":
-    //   console.log(action.value);
+    case "INCREASE_QUANTITY":
+      console.log(action.value);
     case "UPDATE_CHECKED":
       return [...state, action.value];
     default:
