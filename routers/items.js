@@ -15,4 +15,6 @@ router.delete('/delete/:id', itemsController.deleteItem);
 
 router.patch('/updatequantity/:id', itemsController.updateItemQuantity);
 
+router.patch('/updatechecked/:id', itemsController.updateItemChecked);
+
 module.exports = router;

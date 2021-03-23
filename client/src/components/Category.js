@@ -12,7 +12,9 @@ const Category = (props) => {
           return <Item 
                     itemName={item.item_name} 
                     quantity={item.quantity} 
+                    checked={item.checked}
                     itemId={item.item_id} 
+                    catId={item.category_id}
                     key={item.item_id}
                   />
         }

@@ -6,7 +6,8 @@ class Item extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      quantity: this.props.quantity
+      quantity: this.props.quantity,
+      checked: this.props.checked
     }
   }
 
@@ -14,24 +15,41 @@ class Item extends React.Component {
     if(this.state.quantity > 1){
       this.setState({
         quantity: this.state.quantity - 1
-      })
-      const updatedItem = {
-        item_id: id,
-        quantity: this.state.quantity
-      }
-      this.props.decreaseQuantity(updatedItem);
-    }
+      }, () => {
+        const updatedItem = {
+          item_id: id,
+          quantity: this.state.quantity
+        };
+        this.props.decreaseQuantity(updatedItem);
+      });
+    };
   }
 
   increaseQuantity = (id) => {
     this.setState({
-      quantity: this.state.quantity + 1
-    })
-    const updatedItem = {
-      item_id: id,
-      quantity: this.state.quantity
-    }
-    this.props.increaseQuantity(updatedItem);
+      quantity: this.state.quantity++
+    }, () => {
+      const updatedItem = {
+        item_id: id,
+        quantity: this.state.quantity
+      };
+      this.props.increaseQuantity(updatedItem);
+    });
+  }
+
+  updateChecked = (id) => {
+    this.setState({
+      checked: !this.state.checked 
+    }, () => {
+      const updatedItem = {
+        item_id: id,
+        item_name: this.props.itemName,
+        quantity: this.props.quantity,
+        checked: this.state.checked,
+        category_id: this.props.catId
+      };
+      this.props.updateChecked(updatedItem);
+    });
   }
 
   render() {
@@ -39,7 +57,7 @@ class Item extends React.Component {
         <div className="item-container"> 
 
           <div className="checkmark-name-container">
-            <input className= "checkmark" type="checkbox"/>
+            <input className="checkmark" type="checkbox" checked={this.state.checked} onChange={() => this.updateChecked(this.props.itemId)} />
             <p className="item-name">{this.props.itemName}</p>
           </div>
 

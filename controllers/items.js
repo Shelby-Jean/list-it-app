@@ -3,7 +3,7 @@ const pool = require('../sql/connection');
 const { handleSQLError } = require('../sql/error');
 
 getItemNameQuantityCategory = (req, res) => {
-  let sql = `SELECT items.item_id, items.item_name, items.quantity, categories.category_id 
+  let sql = `SELECT items.item_id, items.item_name, items.quantity, items.checked, categories.category_id 
     FROM items INNER JOIN categories ON categories.category_id = items.category_id 
     ORDER BY item_name ASC;`;
   pool.query(sql, (err, rows) => {
@@ -79,11 +79,27 @@ const updateItemQuantity = (req, res) => {
   })
 }
 
+const updateItemChecked = (req, res) => {
+  let sql = 'UPDATE items SET checked = ? WHERE item_id = ?;';
+  sql = mysql.format(sql, [req.body.checked, req.params.id]);
+
+  pool.query(sql, (err, results) => {
+    if (err) {
+      return handleSQLError(res,err);
+    }
+    return res.json({ 
+      checked: req.body.checked,
+      item_id: req.params.id
+     });
+  })
+}
+
 module.exports = { 
   getItemNameQuantityCategory,
   // getAllItems,
   // getItemById,
   createItem,
   deleteItem,
-  updateItemQuantity
+  updateItemQuantity,
+  updateItemChecked
 };
