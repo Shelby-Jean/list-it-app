@@ -36,8 +36,8 @@ getItemNameQuantityCategory = (req, res) => {
 // };
 
 const createItem = (req, res) => {
-  let sql = 'INSERT INTO items (item_name, quantity, category_id) VALUES (?, ?, ?);';
-  sql = mysql.format(sql, [req.body.item_name, req.body.quantity, req.body.category_id]);
+  let sql = 'INSERT INTO items (item_name, quantity, checked, category_id) VALUES (?, ?, ?, ?);';
+  sql = mysql.format(sql, [req.body.item_name, req.body.quantity, req.body.checked, req.body.category_id]);
 
   pool.query(sql, (err, results) => {
     if (err) {
@@ -47,6 +47,7 @@ const createItem = (req, res) => {
       item_id: results.insertId,
       item_name: req.body.item_name,
       quantity: req.body.quantity,
+      checked: req.body.checked,
       category_id: req.body.category_id
     });
   })
@@ -73,8 +74,11 @@ const updateItemQuantity = (req, res) => {
       return handleSQLError(res,err);
     }
     return res.json({ 
+      item_id: req.params.id,
+      item_name: req.body.item_name,
       quantity: req.body.quantity,
-      item_id: req.params.id
+      checked: req.body.checked,
+      category_id: req.body.category_id
      });
   })
 }
@@ -88,8 +92,11 @@ const updateItemChecked = (req, res) => {
       return handleSQLError(res,err);
     }
     return res.json({ 
+      item_id: req.params.id,
+      item_name: req.body.item_name,
+      quantity: req.body.quantity,
       checked: req.body.checked,
-      item_id: req.params.id
+      category_id: req.body.category_id
      });
   })
 }

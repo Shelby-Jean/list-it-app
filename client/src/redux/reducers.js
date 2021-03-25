@@ -30,15 +30,24 @@ const items = (state = [], action) => {
       const newState = [...state];
       const filteredState = newState.filter(item => item.item_id !== parseInt(action.value.item_id));
       return filteredState;
-    // case "DECREASE_QUANTITY":
-    //   console.log(action.value);
-    //   // const s = [...state];
-    //   // const updatedS = s.find(item => item.item_id == action.value.item_id ? )
-    //   return state;
+    case "DECREASE_QUANTITY":
+      const indexUpdated = state.findIndex(item => item.item_id === parseInt(action.value.item_id));
+      const updatedItem = {...action.value, quantity: action.value.quantity};
+      return [
+        ...state.slice(0, indexUpdated),
+        updatedItem,
+        ...state.slice(indexUpdated + 1)
+      ];
     case "INCREASE_QUANTITY":
-      console.log(action.value);
+      const indexU = state.findIndex(item => item.item_id === parseInt(action.value.item_id));
+      const uItem = {...action.value, quantity: action.value.quantity};
+      return [
+        ...state.slice(0, indexU),
+        uItem,
+        ...state.slice(indexU + 1)
+      ];
     case "UPDATE_CHECKED":
-      return [...state, action.value];
+      console.log(action.value);
     default:
       return state;
   }

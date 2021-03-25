@@ -144,7 +144,7 @@ export const decreaseQuantity = (updatedItem) => {
     })
       .then(response => response.json())
       .then(data => {
-        console.timeLog(data)
+        console.log(data)
         const action = {
           type: "DECREASE_QUANTITY",
           value: data

@@ -8,6 +8,7 @@ const AddItem = (props) => {
     setNewItem({
       item_name: e.target.value,
       quantity: 1,
+      checked: 0,
       category_id: props.catId
     });
   }
