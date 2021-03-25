@@ -47,8 +47,13 @@ const items = (state = [], action) => {
         ...state.slice(indexU + 1)
       ];
     case "UPDATE_CHECKED":
-      console.log(action.value);
-    default:
+      const indexOfUpd = state.findIndex(item => item.item_id === parseInt(action.value.item_id));
+      const updItem = {...action.value, checked: action.value.checked};
+      return [
+        ...state.slice(0, indexOfUpd),
+        updItem,
+        ...state.slice(indexOfUpd + 1)
+      ];    default:
       return state;
   }
 }
