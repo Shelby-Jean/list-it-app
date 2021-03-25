@@ -144,7 +144,6 @@ export const decreaseQuantity = (updatedItem) => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         const action = {
           type: "DECREASE_QUANTITY",
           value: data
@@ -158,7 +157,6 @@ export const decreaseQuantity = (updatedItem) => {
 }
 
 export const increaseQuantity = (updatedItem) => {
-  console.log(updatedItem)
   return (dispatch) => {
     fetch(`/items/updatequantity/${updatedItem.item_id}`, {
       method: 'PATCH',

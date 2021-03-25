@@ -45,7 +45,7 @@ class Item extends React.Component {
 
   updateChecked = (id) => {
     this.setState({
-      checked: !this.state.checked 
+      checked: this.state.checked === 0 ? 1 : 0
     }, () => {
       const updatedItem = {
         item_id: id,
@@ -63,7 +63,15 @@ class Item extends React.Component {
         <div className="item-container"> 
 
           <div className="checkmark-name-container">
-            <input className="checkmark" type="checkbox" checked={this.state.checked} onChange={() => this.updateChecked(this.props.itemId)} />
+            {/* { 
+              this.state.checked === '0' ? (
+                <input className="checkmark" type="checkbox" onChange={() => this.updateChecked(this.props.itemId)} />
+              ) :
+              (
+                <input className="checkmark" type="checkbox" checked={parseInt(this.state.checked) ? 'checked' : ''} onChange={() => this.updateChecked(this.props.itemId)} />
+              )
+            } */}
+            <input className="checkmark" type="checkbox" checked={parseInt(this.state.checked) ? 'checked' : ''} onChange={() => this.updateChecked(this.props.itemId)} />
             <p className="item-name">{this.props.itemName}</p>
           </div>
 

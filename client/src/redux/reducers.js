@@ -32,7 +32,7 @@ const items = (state = [], action) => {
       return filteredState;
     case "DECREASE_QUANTITY":
       const indexUpdated = state.findIndex(item => item.item_id === parseInt(action.value.item_id));
-      const updatedItem = {...action.value, quantity: action.value.quantity};
+      const updatedItem = {...action.value, item_id: parseInt(action.value.item_id), quantity: action.value.quantity};
       return [
         ...state.slice(0, indexUpdated),
         updatedItem,
@@ -40,7 +40,7 @@ const items = (state = [], action) => {
       ];
     case "INCREASE_QUANTITY":
       const indexU = state.findIndex(item => item.item_id === parseInt(action.value.item_id));
-      const uItem = {...action.value, quantity: action.value.quantity};
+      const uItem = {...action.value, item_id: parseInt(action.value.item_id), quantity: action.value.quantity};
       return [
         ...state.slice(0, indexU),
         uItem,
@@ -48,7 +48,7 @@ const items = (state = [], action) => {
       ];
     case "UPDATE_CHECKED":
       const indexOfUpd = state.findIndex(item => item.item_id === parseInt(action.value.item_id));
-      const updItem = {...action.value, checked: action.value.checked};
+      const updItem = {...action.value, item_id: parseInt(action.value.item_id), checked: action.value.checked};
       return [
         ...state.slice(0, indexOfUpd),
         updItem,
