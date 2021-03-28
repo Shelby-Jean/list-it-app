@@ -14,13 +14,17 @@ const signup = (req, res) => {
   bcrypt.hash(password, saltRounds, function(err, hash) {
     sql = mysql.format(sql, [ username, hash ]);
 
-    pool.query(sql, (err, res) => {
+    pool.query(sql, (err, results) => {
       if (err) {
         if (err.code === 'ER_DUP_ENTRY') {
           return res.status(409).send('This username is already registered.');
         }
       }
-      return res.send('Sign-up successful');
+      res.json({
+        msg: 'Sign up successful',
+        user_id: results.insertId,
+        username: req.body.username
+      })
     })
   })
 }

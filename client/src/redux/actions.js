@@ -1,4 +1,14 @@
-import cookie from 'cookie';
+export const logIn = () => {
+  return {
+    type: "LOG_IN",
+  };
+};
+
+export const logOut = () => {
+  return {
+    type: "LOG_OUT",
+  };
+};
 
 export const signUp = (user) => {
   return (dispatch) => {
@@ -11,6 +21,7 @@ export const signUp = (user) => {
     })
     .then(response => response.json())
     .then(data => {
+      console.log(data);
       const action = {
         type: "SIGN_UP",
         value: data
@@ -21,37 +32,7 @@ export const signUp = (user) => {
       console.log('Error:', error);
     });
   }
-}
-
-const getToken = () => {
-  const cookies = cookie.parse(document.cookie);
-  return cookies["token"];
-}
-
-export const logIn = (user) => {
-  return (dispatch) => {
-    fetch('/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'authorization': getToken()
-      },
-      body: JSON.stringify(user),
-    })
-    .then(response => response.json())
-    .then(data => {
-      // const token = data.token;
-      const action = {
-        type: "LOG_IN",
-        value: data
-      }
-      dispatch(action)
-    })
-    .catch((error) => {
-      console.log('Error:', error);
-    });
-  }
-}
+};
 
 export const getCategories = () => {
   return (dispatch) => {
@@ -68,7 +49,7 @@ export const getCategories = () => {
         console.error('Error:', error);
       });
   }
-}
+};
 
 export const getItems = () => {
   return (dispatch) => {
@@ -85,7 +66,7 @@ export const getItems = () => {
         console.error('Error:', error);
       });
   }
-}
+};
 
 export const addItem = (item) => {
   return (dispatch) => {
@@ -108,8 +89,7 @@ export const addItem = (item) => {
         console.error('Error:', error);
       });
   }
-}
-
+};
 
 export const deleteItem = (id) => {
   return (dispatch) => {
@@ -131,7 +111,7 @@ export const deleteItem = (id) => {
         console.error('Error:', error);
       });
   }
-}
+};
 
 export const decreaseQuantity = (updatedItem) => {
   return (dispatch) => {
@@ -154,7 +134,7 @@ export const decreaseQuantity = (updatedItem) => {
         console.error('Error:', error);
       });
   }
-}
+};
 
 export const increaseQuantity = (updatedItem) => {
   return (dispatch) => {
@@ -177,7 +157,7 @@ export const increaseQuantity = (updatedItem) => {
         console.error('Error:', error);
       });
   }
-}
+};
 
 export const updateChecked = (updatedItem) => {
   return (dispatch) => {
@@ -200,4 +180,4 @@ export const updateChecked = (updatedItem) => {
         console.error('Error:', error);
       });
   }
-}
+};

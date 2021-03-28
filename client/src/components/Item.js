@@ -63,14 +63,6 @@ class Item extends React.Component {
         <div className="item-container"> 
 
           <div className="checkmark-name-container">
-            {/* { 
-              this.state.checked === '0' ? (
-                <input className="checkmark" type="checkbox" onChange={() => this.updateChecked(this.props.itemId)} />
-              ) :
-              (
-                <input className="checkmark" type="checkbox" checked={parseInt(this.state.checked) ? 'checked' : ''} onChange={() => this.updateChecked(this.props.itemId)} />
-              )
-            } */}
             <input className="checkmark" type="checkbox" checked={parseInt(this.state.checked) ? 'checked' : ''} onChange={() => this.updateChecked(this.props.itemId)} />
             <p className="item-name">{this.props.itemName}</p>
           </div>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import cookie from 'cookie';
 
 const LogIn = (props) => {
   const [username, setUsername] = useState("");
@@ -15,13 +16,37 @@ const LogIn = (props) => {
     setPassword(e.target.value);
   }
 
+  const getToken = () => {
+    const cookies = cookie.parse(document.cookie);
+    return cookies["token"];
+  }
+
   const login = (e) => {
     e.preventDefault();
     const user = {username, password};
-    // document.cookie = "loggedIn=true;max-age=60*1000";
-    // document.cookie = 
-    props.logIn(user);
-    history.push("/list");
+
+    fetch('/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization': getToken()
+      },
+      body: JSON.stringify(user),
+    })
+    .then(response => response.json())
+    .then(data => {
+      if(data.authenticated){
+        console.log(data)
+        const token = data.token;
+        document.cookie = token;
+        props.logIn();
+        //get and/or set user?
+        history.push("/list");
+      }
+    })
+    .catch((error) => {
+      console.log('Error:', error);
+    });
   }
 
   return (
