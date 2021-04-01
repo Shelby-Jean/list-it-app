@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import cookie from 'cookie';
 
 const LogIn = (props) => {
@@ -36,9 +36,8 @@ const LogIn = (props) => {
     .then(response => response.json())
     .then(data => {
       if(data.authenticated){
-        console.log(data)
         const token = data.token;
-        document.cookie = token;
+        document.cookie = `token=${token}`;
         props.logIn();
         //get and/or set user?
         history.push("/list");
@@ -70,9 +69,11 @@ const LogIn = (props) => {
         />
         <button className="auth-button" type="submit">LOG IN</button>
       </form>
-      {/* <div className="login-signup-alt">
-        <p>Don't have an account? Sign up here!</p>
-      </div> */}
+      <Link to="/signup">
+        <div className="login-signup-alt">
+          <p>Don't have an account? Sign up here!</p>
+        </div>
+      </Link>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 const SignUp = (props) => {
   const [username, setUsername] = useState("");
@@ -43,9 +43,11 @@ const SignUp = (props) => {
         />
         <button className="auth-button" type="submit">SIGN UP</button>
       </form>
-      {/* <div className="login-signup-alt">
-        <p>Already have an account? Log in here!</p>
-      </div> */}
+      <Link to="/login">
+        <div className="login-signup-alt">
+          <p>Already have an account? Log in here!</p>
+        </div>
+      </Link>
     </div>
   );
 }
