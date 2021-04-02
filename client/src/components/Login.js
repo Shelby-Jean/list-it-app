@@ -16,20 +16,23 @@ const LogIn = (props) => {
     setPassword(e.target.value);
   }
 
-  const getToken = () => {
-    const cookies = cookie.parse(document.cookie);
-    return cookies["token"];
-  }
+  // const getToken = () => {
+  //   const cookies = cookie.parse(document.cookie);
+  //   return cookies["token"];
+  // }
 
   const login = (e) => {
     e.preventDefault();
     const user = {username, password};
 
+    const cookies = cookie.parse(document.cookie);
+    const headerToken = cookies["token"];
+
     fetch('/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'authorization': getToken()
+        'authorization': 'Bearer ' + headerToken
       },
       body: JSON.stringify(user),
     })
@@ -39,7 +42,6 @@ const LogIn = (props) => {
         const token = data.token;
         document.cookie = `token=${token}`;
         props.logIn();
-        //get and/or set user?
         history.push("/list");
       }
     })
