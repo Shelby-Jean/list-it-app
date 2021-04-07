@@ -1,6 +1,4 @@
 const mysql = require('mysql');
-// const dotenv = require('dotenv');
-// dotenv.config();
 
 class Connection {
   constructor() {
@@ -9,9 +7,9 @@ class Connection {
 
       const config = {
         connectionLimit: 100,
-        host: 'den1.mysql4.gear.host',
+        host: process.env.DB_HOST,
         user: 'listit',
-        password: 'Eq1pq-8bjM?S',
+        password: process.env.DB_PASSWORD,
         database: 'listit'
       };
 

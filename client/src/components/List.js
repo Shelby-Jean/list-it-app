@@ -2,9 +2,6 @@ import React from 'react';
 import Category from '../containers/Category';
 
 class List extends React.Component {
-  // constructor(props){
-  //   super(props);
-  // }
 
   componentDidMount() {
     this.props.getItems();

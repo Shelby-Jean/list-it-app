@@ -23,22 +23,6 @@ const getUserByUsername = (req, res) => {
   })
 };
 
-// const createUser = (req, res) => {
-//   let sql = 'INSERT INTO users (username, password) VALUES (?, ?);';
-//   sql = mysql.format(sql, [req.body.username, req.body.password]);
-
-//   pool.query(sql, (err, res) => {
-//     if (err) {
-//       return handleSQLError(res, err);
-//     }
-//     return res.json({
-//       newId:req.body.user_id,
-//       username: req.body.username,
-//       password: req.body.password
-//     });
-//   })
-// }
-
 const deleteUserById = (req, res) => {
   let sql = 'DELETE FROM users WHERE user_id = ?';
   sql = mysql.format(sql, [req.body.user_id]);
@@ -54,6 +38,5 @@ const deleteUserById = (req, res) => {
 module.exports = { 
   getAllUsers,
   getUserByUsername,
-  // createUser,
   deleteUserById
 };

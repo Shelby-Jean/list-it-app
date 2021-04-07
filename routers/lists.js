@@ -1,14 +1,14 @@
 const express = require('express');
 const listsController = require('../controllers/lists');
-// const { authenticate } = require('../middleware/auth');
+const { authenticate } = require('../middleware/auth');
 const router = express.Router();
 
-router.get('/', listsController.getAllLists);
+router.get('/', authenticate, listsController.getAllLists);
 
-router.get('/:id', listsController.getListById);
+router.get('/:id', authenticate, listsController.getListById);
 
-router.put('/add', listsController.createList);
+router.put('/add', authenticate, listsController.createList);
 
-router.delete('/delete/:id', listsController.deleteList);
+router.delete('/delete/:id', authenticate, listsController.deleteList);
 
 module.exports = router;

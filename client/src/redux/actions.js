@@ -1,3 +1,8 @@
+import cookie from 'cookie';
+
+const cookies = cookie.parse(document.cookie);
+const headerToken = cookies["token"];
+
 export const logIn = () => {
   return {
     type: "LOG_IN",
@@ -36,7 +41,11 @@ export const signUp = (user) => {
 
 export const getCategories = () => {
   return (dispatch) => {
-    fetch('/categories')
+    fetch('/categories', {
+      headers: {
+        'authorization': 'Bearer ' + headerToken
+      }
+    })
       .then(response => response.json())
       .then(data => {
         const action = {
@@ -53,7 +62,11 @@ export const getCategories = () => {
 
 export const getItems = () => {
   return (dispatch) => {
-    fetch('/items')
+    fetch('/items', {
+      headers: {
+        'authorization': 'Bearer ' + headerToken
+      }
+    })
       .then(response => response.json())
       .then(data => {
         const action = {

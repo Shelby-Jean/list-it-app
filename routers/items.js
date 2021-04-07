@@ -5,9 +5,9 @@ const router = express.Router();
 
 router.get('/', authenticate, itemsController.getItemNameQuantityCategory);
 
-// router.get('/', authenticate, itemsController.getAllItems);
+router.get('/', authenticate, itemsController.getAllItems);
 
-// router.get('/:id', authenticate, itemsController.getItemById);
+router.get('/:id', authenticate, itemsController.getItemById);
 
 router.post('/add', authenticate, itemsController.createItem);
 

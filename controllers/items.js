@@ -14,26 +14,26 @@ getItemNameQuantityCategory = (req, res) => {
   })
 };
 
-// const getAllItems = (req, res) => {
-//   let sql = 'SELECT * FROM items ORDER BY item_name ASC';
-//   pool.query(sql, (err, rows) => {
-//     if (err) {
-//       return handleSQLError(res, err);
-//     }
-//     return res.json(rows);
-//   })
-// };
+const getAllItems = (req, res) => {
+  let sql = 'SELECT * FROM items ORDER BY item_name ASC';
+  pool.query(sql, (err, rows) => {
+    if (err) {
+      return handleSQLError(res, err);
+    }
+    return res.json(rows);
+  })
+};
 
-// const getItemById = (req, res) => {
-//   let sql = 'SELECT * FROM items WHERE item_id = ?';
-//   sql = mysql.format(sql, [req.params.item_id]);
-//   pool.query(sql, (err, rows) => {
-//     if (err) {
-//       return handleSQLError(res, err);
-//     }
-//     return res.json(rows);
-//   });
-// };
+const getItemById = (req, res) => {
+  let sql = 'SELECT * FROM items WHERE item_id = ?';
+  sql = mysql.format(sql, [req.params.item_id]);
+  pool.query(sql, (err, rows) => {
+    if (err) {
+      return handleSQLError(res, err);
+    }
+    return res.json(rows);
+  });
+};
 
 const createItem = (req, res) => {
   let sql = 'INSERT INTO items (item_name, quantity, checked, category_id) VALUES (?, ?, ?, ?);';
@@ -103,8 +103,8 @@ const updateItemChecked = (req, res) => {
 
 module.exports = { 
   getItemNameQuantityCategory,
-  // getAllItems,
-  // getItemById,
+  getAllItems,
+  getItemById,
   createItem,
   deleteItem,
   updateItemQuantity,

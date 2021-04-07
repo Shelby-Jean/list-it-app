@@ -7,8 +7,6 @@ router.get('/', authenticate, usersController.getAllUsers);
 
 router.get('/:username', authenticate, usersController.getUserByUsername);
 
-// router.put('/signup/:username', usersController.createUser);
-
 router.delete('/delete/:id', authenticate, usersController.deleteUserById);
 
 module.exports = router;

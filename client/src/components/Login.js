@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import cookie from 'cookie';
 
 const LogIn = (props) => {
   const [username, setUsername] = useState("");
@@ -16,23 +15,14 @@ const LogIn = (props) => {
     setPassword(e.target.value);
   }
 
-  // const getToken = () => {
-  //   const cookies = cookie.parse(document.cookie);
-  //   return cookies["token"];
-  // }
-
   const login = (e) => {
     e.preventDefault();
     const user = {username, password};
 
-    const cookies = cookie.parse(document.cookie);
-    const headerToken = cookies["token"];
-
     fetch('/auth/login', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'authorization': 'Bearer ' + headerToken
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(user),
     })

@@ -1,4 +1,3 @@
-// import { MdAddShoppingCart } from 'react-icons/md';
 import { useState } from 'react';
 
 const AddItem = (props) => {
