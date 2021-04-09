@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const bodyParser = require('body-parser');
 const usersRouter = require('./routers/users');
 const authRouter = require('./routers/auth');
@@ -8,8 +9,10 @@ const itemsRouter = require('./routers/items');
 const { logger } = require('./middleware/auth');
 
 const app = express();
-// require('dotenv').config();
 const port = process.env.PORT || 5000;
+
+const publicPath = path.join(__dirname, '..', './client/build');
+app.use(express.static(publicPath));
 
 app.use(bodyParser.json());
 app.use(logger);
@@ -22,6 +25,10 @@ app.use('/items', itemsRouter);
 app.get('/', (req, res) => {
   res.send('List It Server!')
 })
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(publicPath, 'index.html'));
+});
 
 app.listen(port, () => {
  console.log(`Server started on port ${port}!`);
