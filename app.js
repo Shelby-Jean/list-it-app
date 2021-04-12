@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  const index = path.join(__dirname, 'build', 'index.html');
+  const index = path.join('build', 'index.html');
   res.sendFile(index);
 });
 
