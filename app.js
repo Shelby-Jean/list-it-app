@@ -27,8 +27,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  const index = path.join('build', 'index.html');
-  res.sendFile(index);
+  res.sendFile(path.join(publicPath, 'index.html'));
 });
 
 app.listen(port, () => {
