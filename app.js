@@ -14,10 +14,6 @@ const port = process.env.PORT || 5000;
 const publicPath = path.join(__dirname, './client/build');
 app.use(express.static(publicPath));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(publicPath, 'index.html'));
-});
-
 app.use(bodyParser.json());
 app.use(logger);
 app.use('/users', usersRouter);
@@ -25,6 +21,10 @@ app.use('/auth', authRouter);
 app.use('/lists', listsRouter);
 app.use('/categories', categoriesRouter);
 app.use('/items', itemsRouter);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(publicPath, 'index.html'));
+});
 
 app.get('/', (req, res) => {
   res.send('List It Server!')
