@@ -11,7 +11,7 @@ const { logger } = require('./middleware/auth');
 const app = express();
 const port = process.env.PORT || 5000;
 
-const publicPath = path.join(__dirname, './client/build');
+const publicPath = path.join(__dirname, 'client/build');
 app.use(express.static(publicPath));
 
 app.use(bodyParser.json());
