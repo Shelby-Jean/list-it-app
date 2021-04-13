@@ -12,7 +12,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 const publicPath = path.join(__dirname, './client/build');
-app.use(express.static("client/build"));
+app.use(express.static(publicPath));
 
 app.use(bodyParser.json());
 app.use(logger);
@@ -24,7 +24,7 @@ app.use('/items', itemsRouter);
 
 app.get('/', (req, res) => {
   res.send('List It Server!')
-});
+})
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
