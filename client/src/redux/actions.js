@@ -1,7 +1,9 @@
 import cookie from 'cookie';
 
 const cookies = cookie.parse(document.cookie);
+console.log(cookies);
 const headerToken = cookies["token"];
+console.log(headerToken);
 
 export const logIn = () => {
   return {
@@ -40,6 +42,7 @@ export const signUp = (user) => {
 };
 
 export const getCategories = () => {
+  console.log(headerToken);
   return (dispatch) => {
     fetch('/categories', {
       headers: {
@@ -61,6 +64,7 @@ export const getCategories = () => {
 };
 
 export const getItems = () => {
+  console.log(headerToken);
   return (dispatch) => {
     fetch('/items', {
       headers: {
