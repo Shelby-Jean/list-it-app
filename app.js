@@ -22,11 +22,11 @@ app.use('/lists', listsRouter);
 app.use('/categories', categoriesRouter);
 app.use('/items', itemsRouter);
 
-// app.get('/', (req, res) => {
-//   res.send('List It Server!')
-// });
-
 app.get('/', (req, res) => {
+  res.send('List It Server!')
+});
+
+app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
 });
 

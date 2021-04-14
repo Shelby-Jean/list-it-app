@@ -7,7 +7,7 @@
     "heroku-postbuild": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "npm start --prefix client",
-    "start": "node app.js",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon app.js",
     "run": "concurrently \"npm run server\" \"npm run client\""
   },
