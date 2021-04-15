@@ -43,6 +43,7 @@ export const getCategories = () => {
   return (dispatch) => {
     fetch('/categories', {
       headers: {
+        'Content-Type': 'application/json',
         'authorization': 'Bearer ' + headerToken
       }
     })
@@ -64,6 +65,7 @@ export const getItems = () => {
   return (dispatch) => {
     fetch('/items', {
       headers: {
+        'Content-Type': 'application/json',
         'authorization': 'Bearer ' + headerToken
       }
     })
@@ -86,7 +88,8 @@ export const addItem = (item) => {
     fetch('/items/add', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'authorization': 'Bearer ' + headerToken
       },
       body: JSON.stringify(item),
     })
@@ -109,7 +112,8 @@ export const deleteItem = (id) => {
     fetch(`/items/delete/${id}`, {
       method: 'DELETE',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'authorization': 'Bearer ' + headerToken
       },
     })
       .then(response => response.json())
@@ -131,7 +135,8 @@ export const decreaseQuantity = (updatedItem) => {
     fetch(`/items/updatequantity/${updatedItem.item_id}`, {
       method: 'PATCH',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'authorization': 'Bearer ' + headerToken
       },
       body: JSON.stringify(updatedItem)
     })
@@ -154,7 +159,8 @@ export const increaseQuantity = (updatedItem) => {
     fetch(`/items/updatequantity/${updatedItem.item_id}`, {
       method: 'PATCH',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'authorization': 'Bearer ' + headerToken
       },
       body: JSON.stringify(updatedItem)
     })
@@ -177,7 +183,8 @@ export const updateChecked = (updatedItem) => {
     fetch(`/items/updatechecked/${updatedItem.item_id}`, {
       method: 'PATCH',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'authorization': 'Bearer ' + headerToken
       },
       body: JSON.stringify(updatedItem)
     })
